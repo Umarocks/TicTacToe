@@ -1,13 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style.css">;
+    <link rel="stylesheet" href="Style.css">
     <script src="Script.js"></script>
     <title>TicTacToe</title>
 </head>
+
 <body>
-    
+    <div class="container">
+        <div class="difficultyDiv">
+            <select name="difficultySelector" id="difficultyInput">
+                <option value="1">Easy</option>
+                <option value="2">Medium</option>
+                <option value="3">Hard</option>
+                <option value="4">Unbeatable</option>
+            </select>
+        </div>
+        <div class="selectXO">
+            <div class="X">
+                <button id="X">X</button>
+            </div>
+            <div class="O">
+                <button id="O">O</button>
+            </div>
+        </div>
+        <div class="map">
+            <div class="buttonRow1">
+                <button id="1"><p></p></button>
+                <button id="2"><p></p></button>
+                <button id="3"><p></p></button>
+            </div>
+            <div class="buttonRow2">
+                <button id="4"><p></p></button>
+                <button id="5"><p></p></button>
+                <button id="6"><p></p></button>
+            </div>
+            <div class="buttonRow3">
+
+                <button id="7"><p></p></button>
+                <button id="8"><p></p></button>
+                <button id="9"><p></p></button>
+            </div>
+        </div>
+        <div class="restart">
+            <button id="restartbtn">Restart</button>
+        </div>
+    </div>
 </body>
+
 </html>
