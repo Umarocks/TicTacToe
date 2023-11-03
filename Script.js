@@ -1,13 +1,22 @@
 var playerChoice = "X";
-let counter = 0;
+var computerChoice = "O";
+let counter = 0; //counter helps to keep track of how many plays have been made so that when counter becomes 9 we can push restart screen
 
+//This function checks the choice of player to play x or o
 function playerChoiceClick(element) {
-  //make a funtion to start a new game whenever this is invoked to avoid cheating and glitches
-  playerChoice = element.textContent;
-  console.log(playerChoice);
-//   resetBoard();
+  if (element.textContent.trim() === "X") {
+    computerChoice = "O";
+    playerChoice = element.textContent;
+  }
+  if (element.textContent.trim() === "O") {
+    computerChoice = "X";
+    playerChoice = element.textContent;
+  }
+  //   console.log(playerChoice + computerChoice);
+  resetBoard();
 }
 
+// This function pushes the player choice to that button and displays it to the board
 function inputOnBoard(element) {
   const buttonId = element.id;
   const buttonContent = document.getElementById(buttonId);
@@ -18,41 +27,52 @@ function inputOnBoard(element) {
   CheckLogic();
 }
 
+//This function checks for logic for winning
 function CheckLogic() {
-    const allButtonsOnBoardCheck = document.querySelector(".map").querySelectorAll("button");
-    const a = allButtonsOnBoardCheck[1];
-    if(allButtonsOnBoardCheck[0].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()&&allButtonsOnBoardCheck[1].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()&&allButtonsOnBoardCheck[2].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()){
-        console.log("PLAYER WON");
+  const winConditions = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8], // Horizontal rows
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8], // Vertical columns
+    [0, 4, 8],
+    [2, 4, 6], // Diagonals
+  ];
+  const allButtonsOnBoardCheck = document
+    .querySelector(".map")
+    .querySelectorAll("button");
+
+  for (const condition of winConditions) {
+    const [a, b, c] = condition;
+    if (
+      allButtonsOnBoardCheck[a].textContent.trim().toLowerCase() ===
+        playerChoice.trim().toLowerCase() &&
+      allButtonsOnBoardCheck[b].textContent.trim().toLowerCase() ===
+        playerChoice.trim().toLowerCase() &&
+      allButtonsOnBoardCheck[c].textContent.trim().toLowerCase() ===
+        playerChoice.trim().toLowerCase()
+    ) {
+      console.log("PLAYER WON");
+      return;
     }
-    else if(allButtonsOnBoardCheck[3].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()&&allButtonsOnBoardCheck[4].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()&&allButtonsOnBoardCheck[5].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()){
-        console.log("PLAYER WON");
+    if (
+      allButtonsOnBoardCheck[a].textContent.trim().toLowerCase() ===
+        computerChoice.trim().toLowerCase() &&
+      allButtonsOnBoardCheck[b].textContent.trim().toLowerCase() ===
+        computerChoice.trim().toLowerCase() &&
+      allButtonsOnBoardCheck[c].textContent.trim().toLowerCase() ===
+        computerChoice.trim().toLowerCase()
+    ) {
+      console.log("Computer WON");
+      return;
     }
-    else if(allButtonsOnBoardCheck[6].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()&&allButtonsOnBoardCheck[7].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()&&allButtonsOnBoardCheck[8].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()){
-        console.log("PLAYER WON");
-    }
-    else if(allButtonsOnBoardCheck[0].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()&&allButtonsOnBoardCheck[3].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()&&allButtonsOnBoardCheck[6].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()){
-        console.log("PLAYER WON");
-    }
-    else if(allButtonsOnBoardCheck[1].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()&&allButtonsOnBoardCheck[4].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()&&allButtonsOnBoardCheck[7].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()){
-        console.log("PLAYER WON");
-    }
-    else if(allButtonsOnBoardCheck[2].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()&&allButtonsOnBoardCheck[5].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()&&allButtonsOnBoardCheck[8].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()){
-        console.log("PLAYER WON");
-    }
-    else if(allButtonsOnBoardCheck[0].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()&&allButtonsOnBoardCheck[4].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()&&allButtonsOnBoardCheck[8].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()){
-        console.log("PLAYER WON");
-    }
-    else if(allButtonsOnBoardCheck[2].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()&&allButtonsOnBoardCheck[4].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()&&allButtonsOnBoardCheck[6].textContent.trim().toLowerCase()===playerChoice.trim().toLowerCase()){
-        console.log("PLAYER WON");
-    }
-    
+  }
+  // No win condition matched
+  console.log("No win yet.");
 }
 
-
-
-
-
-
+//This function resets the board if player changes his icon or on restart button click
 function resetBoard() {
   const allButtonsOnBoard = document
     .querySelector(".map")
@@ -62,6 +82,3 @@ function resetBoard() {
   });
   counter = 0;
 }
-
-
-
