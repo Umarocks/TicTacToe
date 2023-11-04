@@ -9,10 +9,9 @@ body {
   border-radius: 10px;
   padding: 1rem;
   margin-top: 7rem;
-  
 }
 
-.difficultyDiv{
+.difficultyDiv {
   display: flex;
   justify-content: space-evenly;
   width: 99%;
@@ -110,4 +109,3 @@ button:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   display: none;
 }
-
