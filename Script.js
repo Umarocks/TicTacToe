@@ -45,6 +45,9 @@ function CheckLogic() {
 
   for (const condition of winConditions) {
     const [a, b, c] = condition;
+    const computerDispaly = document.querySelector("#computerWonMessage");
+    const playerWonMessage = document.querySelector("#playerWonMessage");
+    const container = document.querySelector(".container");
     if (
       allButtonsOnBoardCheck[a].textContent.trim().toLowerCase() ===
         playerChoice.trim().toLowerCase() &&
@@ -53,7 +56,8 @@ function CheckLogic() {
       allButtonsOnBoardCheck[c].textContent.trim().toLowerCase() ===
         playerChoice.trim().toLowerCase()
     ) {
-      console.log("PLAYER WON");
+      container.style.display = "none";
+      playerWonMessage.style.display = "block";
       return;
     }
     if (
@@ -64,7 +68,8 @@ function CheckLogic() {
       allButtonsOnBoardCheck[c].textContent.trim().toLowerCase() ===
         computerChoice.trim().toLowerCase()
     ) {
-      console.log("Computer WON");
+      computerDispaly.style.display = "block";
+      container.style.display="none";
       return;
     }
   }
@@ -81,4 +86,10 @@ function resetBoard() {
     element.textContent = "";
   });
   counter = 0;
+  const displayMap = document.querySelector(".container");
+  displayMap.style.display = "block";
+  const playerDisplay = document.querySelector("#playerWonMessage");
+  playerDisplay.style.display = "none";
+  const computerDispaly = document.querySelector("#computerWonMessage");
+  computerDispaly.style.display = "none";
 }
