@@ -12,6 +12,17 @@ body {
   
 }
 
+.difficultyDiv{
+  display: flex;
+  justify-content: space-evenly;
+  width: 99%;
+  background-color: white;
+  border-radius: 10px;
+  border: 3px solid #553d67;
+  font-size: 1rem;
+  font-size: larger;
+}
+
 .selectXO {
   display: flex;
   justify-content: center;
@@ -73,6 +84,20 @@ button:hover {
 }
 
 #computerWonMessage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+#playerTieMessage {
   position: absolute;
   top: 50%;
   left: 50%;

@@ -12,12 +12,14 @@
 <body>
     <div class="container">
         <div class="difficultyDiv">
-            <select name="difficultySelector" id="difficultyInput">
+            <!-- <select name="difficultySelector" id="difficultyInput">
                 <option value="1">Easy</option>
                 <option value="2">Medium</option>
                 <option value="3">Hard</option>
                 <option value="4">Unbeatable</option>
-            </select>
+            </select> -->
+            <p>Player 1 : X</p>
+            <p>Player 2 : O</p>
         </div>
         <div class="selectXO">
             <div class="X">
@@ -64,13 +66,19 @@
         </div>
     </div>
     <div id="playerWonMessage" class="hidden">
-        PLAYER WON!
+        PLAYER 1 WON!
         <div class="restart">
             <button id="restartbtn" onclick="resetBoard()">Restart</button>
         </div>
     </div>
     <div id="computerWonMessage" class="hidden">
-        COMPUTER WON!
+        PLAYER 2 WON!
+        <div class="restart">
+            <button id="restartbtn" onclick="resetBoard()">Restart</button>
+        </div>
+    </div>
+    <div id="playerTieMessage" class="hidden">
+        GAME TIED!
         <div class="restart">
             <button id="restartbtn" onclick="resetBoard()">Restart</button>
         </div>
